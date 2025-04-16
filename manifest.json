@@ -10,9 +10,9 @@
         "tabs"
     ],
     "host_permissions": [
-        "*://www.google.com/flights/*",
         "*://www.expedia.com/*",
-        "*://www.kayak.com/*"
+        "*://www.kayak.com/*",
+        "*://www.booking.com/*"
     ],
     "action": {
         "default_popup": "popup.html",
@@ -21,13 +21,11 @@
     "content_scripts": [
         {
             "matches": [
-                "*://www.google.com/flights/*",
                 "*://www.expedia.com/*",
-                "*://www.kayak.com/*"
+                "*://www.kayak.com/*",
+                "*://www.booking.com/*"
             ],
-            "js": [
-                "content.js"
-            ],
+            "js": ["co2.js", "content.js"],
             "run_at": "document_idle"
         }
     ],
