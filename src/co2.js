@@ -23,7 +23,7 @@ function estimateCO2(distanceKm) {
     return distanceKm * factor;
   }
   
-async function estimateFlightCO2(fromCode, toCode) {
+export async function estimateFlightCO2(fromCode, toCode) {
     console.log("Estimating flight CO₂...");
     const airports = await loadAirportData();
     const origin = airports[fromCode.toUpperCase()];

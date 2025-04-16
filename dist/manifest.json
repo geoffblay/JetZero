@@ -10,23 +10,23 @@
         "tabs"
     ],
     "host_permissions": [
-        "*://www.expedia.com/*",
-        "*://www.kayak.com/*",
-        "*://www.booking.com/*"
+        "*://*.expedia.com/*",
+        "*://*.kayak.com/*",
+        "*://*.booking.com/*"
     ],
     "action": {
         "default_popup": "popup.html",
-        "default_icon": "icon.png"
+        "default_icon": "icons/icon.png"
     },
     "content_scripts": [
         {
             "matches": [
-                "*://www.expedia.com/*",
-                "*://www.kayak.com/*",
-                "*://www.booking.com/*"
+                "*://*.expedia.com/*",
+                "*://*.kayak.com/*",
+                "*://*.booking.com/*"
             ],
-            "js": ["co2.js", "content.js"],
-            "run_at": "document_idle"
+            "js": ["content.js"],
+            "type": "module"
         }
     ],
     "web_accessible_resources": [

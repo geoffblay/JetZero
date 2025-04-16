@@ -1,0 +1,39 @@
+{
+    "manifest_version": 3,
+    "name": "JetZero",
+    "version": "1.0",
+    "description": "Offset your flight's carbon emissions and get a tax-deductible receipt.",
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "storage",
+        "tabs"
+    ],
+    "host_permissions": [
+        "*://*.expedia.com/*",
+        "*://*.kayak.com/*",
+        "*://*.booking.com/*"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "icons/icon.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.expedia.com/*",
+                "*://*.kayak.com/*",
+                "*://*.booking.com/*"
+            ],
+            "js": ["content.js"],
+            "type": "module"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+          "resources": ["data/airports.json"],
+          "matches": ["<all_urls>"]
+        }
+      ]
+      
+}
