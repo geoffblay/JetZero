@@ -1,4 +1,5 @@
 import Button from "./Button"
+import { Link } from "react-router-dom";
 
 export default function HeroSection() {
   return (
@@ -7,7 +8,9 @@ export default function HeroSection() {
       <p className="text-xl text-gray-700 mb-8">
         Offset your flight’s carbon emissions — automatically.
       </p>
-      <Button href="#get-started">Get Started</Button>
+      <Button to="/signup" variant="green">
+        Get Started
+      </Button>
     </section>
   );
 }

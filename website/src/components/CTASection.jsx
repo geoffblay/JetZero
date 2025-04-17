@@ -7,8 +7,8 @@ export default function CTASection() {
       <p className="text-gray-700 mb-6">
         Install the Chrome Extension and start flying cleaner.
       </p>
-      <Button href="#" variant="blue">
-        Add to Chrome
+      <Button to="/" variant="blue">
+        Install
       </Button>
     </section>
   );
