@@ -1,5 +1,9 @@
 import { useState } from "react";
 
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {auth} from "../firebase.js";
+
+
 export default function SignupPage() {
   const [formData, setFormData] = useState({
     email: "",
@@ -10,9 +14,20 @@ export default function SignupPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
+    console.log('submit')
     e.preventDefault();
-    // TODO: handle signup logic
-    console.log("Signup submitted:", formData);
+    // TODO: handle firebase signup logic
+    createUserWithEmailAndPassword(auth, formData.email, formData.password)
+        .then((userCredential) => {
+            // Signed up 
+            const user = userCredential.user;
+            // ...
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // ..
+    });
   };
 
   return (
