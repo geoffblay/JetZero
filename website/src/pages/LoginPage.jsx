@@ -1,10 +1,10 @@
 import { useState } from "react";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase.js";
 import { Link } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import {auth} from "../firebase.js";
 
 
-export default function SignupPage() {
+export default function LoginPage() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -14,26 +14,26 @@ export default function SignupPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
-    console.log('submit')
+    console.log('login')
     e.preventDefault();
-    // TODO: handle firebase signup logic
-    createUserWithEmailAndPassword(auth, formData.email, formData.password)
-        .then((userCredential) => {
-            // Signed up 
-            const user = userCredential.user;
-            console.log("signed up: ", user);
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-    });
+    // TODO: handle firebase log in logic
+    signInWithEmailAndPassword(auth, formData.email, formData.password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        console.log("logged in: ", user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-blue-50 px-4">
       <div className="w-full max-w-md p-8 bg-white rounded-2xl shadow-lg">
         <h2 className="text-2xl font-semibold text-gray-800 text-center mb-6">
-          Create your JetZero account
+          Login to your JetZero account
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-5">
@@ -82,9 +82,9 @@ export default function SignupPage() {
         </form>
 
         <p className="text-sm text-gray-600 text-center mt-4">
-          Already have an account?{" "}
-          <Link to="/login" className="text-green-600 hover:underline">
-            Log in
+          Don't have an account yet?{" "}
+            <Link to="/signup" className="text-green-600 hover:text-green-700 font-semibold">
+            Sign Up!
             </Link>
         </p>
       </div>
